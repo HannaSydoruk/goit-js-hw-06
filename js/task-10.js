@@ -14,20 +14,33 @@ let amount = 0;
 createBtn.addEventListener('click', onCreateClick);
 
 function onCreateClick() {
-  createBoxes(amount);
+  destroyBoxes();
   amount = amountInput.value;
+  createBoxes(amount);
 }
-
-const arrayOfBoxes = [];
 
 function createBoxes(amount) {
+  const arrayOfBoxes = [];
 
-  let newBox = document.createElement('div');
-  newBox.style.width = '30px';
-  newBox.style.height = '30px';
-  newBox.style.background = getRandomHexColor();
+  let divSize = 30;
+  for (let i = 1; i <= amount; i += 1) {
 
-  arrayOfBoxes.push(newBox);
+    let newBox = document.createElement('div');
+
+    newBox.style.width = `${divSize}px`;
+    newBox.style.height = `${divSize}px`;
+    divSize += 10;
+    newBox.style.background = getRandomHexColor();
+
+    arrayOfBoxes.push(newBox);
+  }
+  galeryElements.append(...arrayOfBoxes);
 }
 
-galeryElements.append(...arrayOfBoxes);
+
+
+destroyBtn.addEventListener('click', destroyBoxes)
+
+function destroyBoxes() {
+  galeryElements.innerHTML = '';
+}
