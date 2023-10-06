@@ -3,13 +3,16 @@ const dataLength = parseInt(input.getAttribute('data-length'));
 
 input.addEventListener('blur', onInputBlur);
 
+function updateInputClass(classToAdd, classToRemove) {
+    input.classList.add(classToAdd);
+    input.classList.remove(classToRemove);
+}
+
 function onInputBlur(event) {
     if (event.currentTarget.value.length === dataLength) {
-        input.classList.add('valid');
-        input.classList.remove('invalid');
+        updateInputClass('valid', 'invalid');
     }
     else {
-        input.classList.add('invalid');
-        input.classList.remove('valid');
+        updateInputClass('invalid', 'valid');
     }
 }

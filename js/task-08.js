@@ -7,19 +7,18 @@ function onSubmit(event) {
 
     const { email, password } = event.currentTarget.elements;
 
-    if (email.value === '' || password.value === '') {
+    if (email.value.trim() === '' || password.value.trim() === '') {
         alert('Заповніть усі поля!!!');
         return;
     }
 
     const data = {
-        email: email.value,
-        password: password.value,
+        email: email.value.trim(),
+        password: password.value.trim(),
     }
 
     console.log(data);
-    formEl.reset();
+    event.target.reset();
 }
-
 
 
